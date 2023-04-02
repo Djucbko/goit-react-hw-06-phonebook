@@ -1,0 +1,19 @@
+.phonebookWrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+.form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 20px;
+}
+.spanName {
+	margin-right: 30px;
+}
+.spanNumber {
+	margin-right: 15px;
+}

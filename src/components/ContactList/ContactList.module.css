@@ -1,0 +1,15 @@
+.contactListWrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+.itemWrapper {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 20px;
+}
+.itemWrapper:not(:last-child) {
+	margin-bottom: 20px;
+}
