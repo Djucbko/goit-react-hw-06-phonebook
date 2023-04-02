@@ -3,11 +3,9 @@ import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { addItem } from '../../redux/features/contact/contactSlice';
 import css from './ContactForm.module.css';
-
+import { selectContacts } from 'redux/features/contact/selectors';
 const ContactForm = () => {
-  const { contacts } = useSelector(state => {
-    return state.contact;
-  });
+  const  contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
@@ -20,15 +18,15 @@ const ContactForm = () => {
   const onFormSubmit = e => {
     e.preventDefault();
     const form = e.currentTarget;
-    let formData = {
+    const formData = {
       id: nanoid(),
       name: form.elements.name.value,
       number: form.elements.number.value,
     };
-    let checkedName = contacts.filter(item => {
+    let checkedName = contacts.some(item => {
       return formData.name.toLowerCase() === item.name.toLowerCase();
     });
-    if (checkedName.length === 0) {
+    if (!checkedName) {
       dispatch(addItem(formData));
       setName('');
       setNumber('');
